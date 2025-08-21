@@ -6,16 +6,11 @@ RUN curl https://dl.min.io/client/mc/release/linux-amd64/mc \
   -o /usr/local/bin/mc && \
   chmod +x /usr/local/bin/mc
 
-# สร้าง setup script
-COPY setup.sh /setup.sh
-RUN chmod +x /setup.sh
+# สร้าง entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-# สร้าง start script
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+EXPOSE 9000
 
-EXPOSE 9000 9001
-
-# Override ENTRYPOINT และใช้ CMD
-ENTRYPOINT []
-CMD ["/start.sh"]
+# ใช้ ENTRYPOINT เพื่อ override
+ENTRYPOINT ["/entrypoint.sh"]
