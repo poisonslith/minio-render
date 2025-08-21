@@ -16,4 +16,6 @@ RUN chmod +x /start.sh
 
 EXPOSE 9000 9001
 
+# Override ENTRYPOINT และใช้ CMD
+ENTRYPOINT []
 CMD ["/start.sh"]
